@@ -1,18 +1,12 @@
-package com.portfolio_backend.modele;
+package com.portfolio_backend.dto;
 
-import jakarta.persistence.*;
-
-import java.util.List;
-
-@Entity
-public class Profil {
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+public class ProfilPatchDTO {
+    private String nom;
+    private String emploi;
+    private String introduction;
+    private String aPropos;
+    private String photo;
+    private String mail;
 
     public String getNom() {
         return nom;
@@ -21,6 +15,7 @@ public class Profil {
     public void setNom(String nom) {
         this.nom = nom;
     }
+
 
     public String getEmploi() {
         return emploi;
@@ -61,25 +56,4 @@ public class Profil {
     public void setMail(String mail) {
         this.mail = mail;
     }
-
-    public List<ReseauSocial> getReseauxSociaux() {
-        return reseauxSociaux;
-    }
-
-    public void setReseauxSociaux(List<ReseauSocial> reseauxSociaux) {
-        this.reseauxSociaux = reseauxSociaux;
-    }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nom;
-    private String emploi;
-    private String introduction;
-    private String aPropos;
-    private String photo;
-    private String mail;
-
-    @OneToMany(mappedBy = "profil", cascade = CascadeType.ALL)
-    private List<ReseauSocial> reseauxSociaux;
 }
