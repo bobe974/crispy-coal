@@ -1,23 +1,27 @@
 package com.portfolio_backend.services;
 
+import com.portfolio_backend.dto.ProfilDTO;
 import com.portfolio_backend.dto.ProfilPatchDTO;
 import com.portfolio_backend.modele.Profil;
 import com.portfolio_backend.modele.Projet;
 import com.portfolio_backend.repository.ProfilRepository;
+import com.portfolio_backend.repository.ProjetRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
+
 @Service
 public class ProfilImpl {
     private final ProfilRepository profilRepository;
+    private final ProjetRepository projetRepository;
 
     @Autowired
-    public ProfilImpl(ProfilRepository profilRepository){
+    public ProfilImpl(ProfilRepository profilRepository, ProjetRepository projetRepository){
         this.profilRepository = profilRepository;
+        this.projetRepository = projetRepository;
     }
 
     public List<Profil> recupererProfil(){
@@ -50,5 +54,35 @@ public class ProfilImpl {
             profil.setMail(updatedProfil.getMail());
         }
         profilRepository.save(profil);
+    }
+
+    public ProfilDTO recupererProfilDto() {
+        List<Profil> profils = profilRepository.findAll();
+        if (profils.isEmpty()) {
+            throw new NoSuchElementException("Aucun profil trouvé");
+        }
+        Profil profil = profils.get(0);
+        /**TODO TRI A FAIRE SUR LA DATE**/
+        List<Projet> projets = projetRepository.findAll(Sort.by(Sort.Order.desc("date")));
+        if (projets == null) {
+            projets = Collections.emptyList();
+        }
+
+//        Projet projet = new Projet();
+//        projet.setDescription("llol");
+//        projet.setNom("sxxx");
+//        projet.setLink("http");
+//        projets.add(projet);
+
+        ProfilDTO profilDTO = new ProfilDTO();
+        profilDTO.setNom(profil.getNom());
+        profilDTO.setMesProjets(projets);
+        profilDTO.setPhoto(profil.getPhoto());
+        profilDTO.setIntroduction(profil.getIntroduction());
+        profilDTO.setMail(profil.getMail());
+        profilDTO.setEmploi(profil.getEmploi());
+        profilDTO.setaPropos(profil.getaPropos());
+        profilDTO.setMesProjets(projets);
+        return profilDTO;
     }
 }

@@ -1,5 +1,6 @@
 package com.portfolio_backend.controller;
 
+import com.portfolio_backend.dto.ProfilDTO;
 import com.portfolio_backend.dto.ProfilPatchDTO;
 import com.portfolio_backend.modele.Profil;
 import com.portfolio_backend.services.ProfilImpl;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/profil")
 public class ProfilController {
 
@@ -19,8 +21,8 @@ public class ProfilController {
         this.service = service;
     }
     @GetMapping
-    public List<Profil> getProfil() {
-        return service.recupererProfil();
+    public ProfilDTO getProfil() {
+        return service.recupererProfilDto();
     }
     @PostMapping
     public void createProfil(@RequestBody Profil profil) {
