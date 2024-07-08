@@ -56,6 +56,9 @@ public class ProjetImpl {
         if (updatedProjet.getDate() != null) {
             projet1.setDate(updatedProjet.getDate());
         }
+        if(updatedProjet.getPhotos() != null){
+            projet1.setPhotos(updatedProjet.getPhotos());
+        }
         projetRepository.save(projet1);
     }
 
