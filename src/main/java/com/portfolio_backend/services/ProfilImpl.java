@@ -53,6 +53,12 @@ public class ProfilImpl {
         if (updatedProfil.getMail() != null) {
             profil.setMail(updatedProfil.getMail());
         }
+        if (updatedProfil.getGithub()!= null) {
+            profil.setGithub(updatedProfil.getGithub());
+        }
+        if (updatedProfil.getLinkedin() != null) {
+            profil.setLinkedin(updatedProfil.getLinkedin());
+        }
         profilRepository.save(profil);
     }
 
@@ -83,6 +89,8 @@ public class ProfilImpl {
         profilDTO.setEmploi(profil.getEmploi());
         profilDTO.setaPropos(profil.getaPropos());
         profilDTO.setMesProjets(projets);
+        profilDTO.setGithub(profil.getGithub());
+        profilDTO.setLinkedin(profil.getLinkedin());
         return profilDTO;
     }
 }

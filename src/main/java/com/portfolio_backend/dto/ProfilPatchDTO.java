@@ -8,6 +8,25 @@ public class ProfilPatchDTO {
     private String photo;
     private String mail;
 
+    public String getGithub() {
+        return github;
+    }
+
+    public void setGithub(String github) {
+        this.github = github;
+    }
+
+    public String getLinkedin() {
+        return linkedin;
+    }
+
+    public void setLinkedin(String linkedin) {
+        this.linkedin = linkedin;
+    }
+
+    private String github;
+    private String linkedin;
+
     public String getNom() {
         return nom;
     }

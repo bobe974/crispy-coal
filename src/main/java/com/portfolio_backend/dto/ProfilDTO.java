@@ -1,16 +1,38 @@
 package com.portfolio_backend.dto;
 
 import com.portfolio_backend.modele.Projet;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import java.util.List;
 
 public class ProfilDTO {
+    private Long id;
     private String nom;
     private String emploi;
     private String introduction;
     private String aPropos;
     private String photo;
     private String mail;
+    private String github;
+    private String linkedin;
+
+    public String getGithub() {
+        return github;
+    }
+
+    public void setGithub(String github) {
+        this.github = github;
+    }
+
+    public String getLinkedin() {
+        return linkedin;
+    }
+
+    public void setLinkedin(String linkedin) {
+        this.linkedin = linkedin;
+    }
 
     private List<Projet> mesProjets;
 
@@ -69,5 +91,11 @@ public class ProfilDTO {
     public void setMesProjets(List<Projet> mesProjets) {
         this.mesProjets = mesProjets;
     }
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

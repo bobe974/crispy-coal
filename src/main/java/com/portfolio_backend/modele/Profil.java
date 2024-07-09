@@ -79,7 +79,26 @@ public class Profil {
     private String aPropos;
     private String photo;
     private String mail;
+    private String github;
+    private String linkedin;
 
     @OneToMany(mappedBy = "profil", cascade = CascadeType.ALL)
     private List<ReseauSocial> reseauxSociaux;
+
+    public String getGithub() {
+        return github;
+    }
+
+    public void setGithub(String github) {
+        this.github = github;
+    }
+
+    public String getLinkedin() {
+        return linkedin;
+    }
+
+    public void setLinkedin(String linkedin) {
+        this.linkedin = linkedin;
+    }
+
 }
