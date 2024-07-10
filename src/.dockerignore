@@ -1,0 +1,15 @@
+target/
+*.jar
+*.war
+*.zip
+*.tar
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tgz
+*.tbz2
+*.txz
+.git/
+.idea/
+*.iml
+*.log
