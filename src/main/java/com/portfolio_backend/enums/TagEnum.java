@@ -6,5 +6,8 @@ public enum TagEnum {
     SPRING,
     JAVASCRIPT,
     CSHARP,
-    REACT
+    REACT,
+    TYPESCRIPT,
+    DOCKER,
+    SQL
 }
