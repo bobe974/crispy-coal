@@ -32,4 +32,9 @@ public class ProfilController {
     public  void updateProfil(@PathVariable Long id, @RequestBody ProfilPatchDTO profilDto) {
         service.updateProfil(profilDto, id);
     }
+
+    @DeleteMapping()
+    public void deleteProfil(){
+        service.deleteProfil();
+    }
 }

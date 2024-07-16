@@ -3,6 +3,7 @@ package com.portfolio_backend.modele;
 import com.portfolio_backend.enums.TagEnum;
 import jakarta.persistence.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -72,15 +73,16 @@ public class Projet {
     private String description;
     private String link;
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    private String date;
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
     @ElementCollection
     private List<String> photos;

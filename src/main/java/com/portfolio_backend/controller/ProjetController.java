@@ -28,6 +28,10 @@ public class ProjetController {
         return service.recupererParId(id);
     }
 
+    @GetMapping("/last")
+    public Projet getLastProjectByDate(){
+        return service.recupererRecentProjet();
+    }
     @PatchMapping("/{id}")
     public void updateProject(@PathVariable Long id, @RequestBody Projet updatedProject) {
         service.updateProjet(updatedProject,id);
@@ -36,5 +40,13 @@ public class ProjetController {
     @PostMapping("")
     public void createProject(@RequestBody Projet newProject) {
          service.ajouterProjet(newProject);
+    }
+    @DeleteMapping("/{id}")
+    public void deleteProject(@PathVariable Long id){
+        service.deleteProject(id);
+    }
+    @DeleteMapping()
+    public void deleteAllProject(){
+        service.deleteAllProject();
     }
 }

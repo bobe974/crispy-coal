@@ -28,6 +28,10 @@ public class ProjetImpl {
         return optionalProjet.orElseThrow(() -> new NoSuchElementException("Projet avec ID " + id + " non trouvé"));
     }
 
+    public Projet recupererRecentProjet(){
+        return projetRepository.findFirstByOrderByDateDesc();
+    }
+
     public void ajouterProjet(Projet projet){
         projetRepository.save(projet);
     }
@@ -60,6 +64,14 @@ public class ProjetImpl {
             projet1.setPhotos(updatedProjet.getPhotos());
         }
         projetRepository.save(projet1);
+    }
+
+
+    public void deleteProject(Long id){
+        projetRepository.deleteById(id);
+    }
+    public void deleteAllProject(){
+        projetRepository.deleteAll();
     }
 
 }

@@ -8,6 +8,9 @@ import jakarta.persistence.Id;
 import java.util.List;
 
 public class ProfilDTO {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;
     private String emploi;

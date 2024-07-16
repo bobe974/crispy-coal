@@ -74,11 +74,6 @@ public class ProfilImpl {
             projets = Collections.emptyList();
         }
 
-//        Projet projet = new Projet();
-//        projet.setDescription("llol");
-//        projet.setNom("sxxx");
-//        projet.setLink("http");
-//        projets.add(projet);
 
         ProfilDTO profilDTO = new ProfilDTO();
         profilDTO.setNom(profil.getNom());
@@ -92,5 +87,9 @@ public class ProfilImpl {
         profilDTO.setGithub(profil.getGithub());
         profilDTO.setLinkedin(profil.getLinkedin());
         return profilDTO;
+    }
+
+    public void deleteProfil(){
+        profilRepository.deleteAll();
     }
 }
